@@ -35,5 +35,3 @@ export function Action() {
     </>
   );
 }
-
-// display.length === 9 ? "active" : "";
