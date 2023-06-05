@@ -7,15 +7,15 @@ type PropsType = {
 
 export function Key({ item }: PropsType) {
   const {
-    phoneContext: { handleAddNumber, handleDelete },
+    phoneContext: { handleAddNumber, handleDelete, calling },
   } = useContext(PhoneContext);
 
   function handleClick() {
-    handleAddNumber(item);
+    if (!calling) handleAddNumber(item);
   }
 
   function handleClickDelete() {
-    handleDelete();
+    if (!calling) handleDelete();
   }
 
   return (
