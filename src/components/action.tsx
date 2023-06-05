@@ -3,7 +3,7 @@ import { PhoneContext } from "../context/phone.context";
 
 export function Action() {
   const {
-    phoneContext: { handleCall, handleHang, display },
+    phoneContext: { handleCall, handleHang, display, calling },
   } = useContext(PhoneContext);
 
   function handleDial() {
@@ -18,12 +18,18 @@ export function Action() {
     <>
       <a
         href="#"
-        className={`call ${display.length === 9 ? "active" : ""}`}
+        className={`call ${
+          calling ? "" : display.length === 9 ? "active" : ""
+        }`}
         onClick={handleDial}
       >
         Call
       </a>
-      <a href="#" className="hang active" onClick={handleHangUp}>
+      <a
+        href="#"
+        className={`hang ${calling ? "active" : ""}`}
+        onClick={handleHangUp}
+      >
         Hang Up
       </a>
     </>
