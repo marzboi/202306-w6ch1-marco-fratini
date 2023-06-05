@@ -25,14 +25,6 @@ export function usePhone() {
   function handleCall() {
     if (phoneState.phoneNumber.length === 9) {
       dispatch(ac.toggleCallAction());
-
-      if (!phoneState.calling) {
-        setTimeout(() => {
-          if (phoneState.calling) {
-            dispatch(ac.toggleCallAction());
-          }
-        }, 3000);
-      }
     }
   }
 
