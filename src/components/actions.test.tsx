@@ -1,7 +1,6 @@
 import { Actions } from "./actions";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import { MemoryRouter } from "react-router-dom";
 import { ContextStructure, PhoneContext } from "../context/phone.context";
 
 describe("Given the Actions component", () => {
@@ -11,11 +10,9 @@ describe("Given the Actions component", () => {
 
   beforeEach(() => {
     render(
-      <MemoryRouter>
-        <PhoneContext.Provider value={value}>
-          <Actions />
-        </PhoneContext.Provider>
-      </MemoryRouter>
+      <PhoneContext.Provider value={value}>
+        <Actions />
+      </PhoneContext.Provider>
     );
   });
 
