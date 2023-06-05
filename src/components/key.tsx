@@ -7,15 +7,11 @@ type PropsType = {
 
 export function Key({ item }: PropsType) {
   const {
-    phoneContext: { phoneNumber, handleAddNumber, handleDelete },
+    phoneContext: { handleAddNumber },
   } = useContext(PhoneContext);
 
   function handleClick() {
-    handleAddNumber(phoneNumber + item);
-  }
-
-  function handleClickDelete() {
-    handleDelete();
+    handleAddNumber(item);
   }
 
   return (
@@ -26,9 +22,7 @@ export function Key({ item }: PropsType) {
             {item}
           </button>
         ) : (
-          <button className="key big" onClick={handleClickDelete}>
-            {item}
-          </button>
+          <button className="key big">{item}</button>
         )}
       </li>
     </>
