@@ -3,8 +3,8 @@ import { PhoneContext } from "../context/phone.context";
 
 export function Display() {
   const {
-    phoneContext: { phoneNumber },
+    phoneContext: { display },
   } = useContext(PhoneContext);
 
-  return <span className="number">{phoneNumber}</span>;
+  return <span className="number">{display}</span>;
 }
