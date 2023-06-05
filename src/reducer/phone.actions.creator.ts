@@ -1,14 +1,25 @@
 import { actionTypes } from "./phone.actions.types";
-// import { Phone } from "../models/phone";
 
 export type PhoneAction = {
   type: string;
   payload?: string | boolean;
 };
 
-export function updateDisplayAction(payload: any): PhoneAction {
+export function addNumberToDisplayAction(payload: string): PhoneAction {
   return {
-    type: actionTypes.update,
+    type: actionTypes.add,
     payload,
+  };
+}
+
+export function removeNumberFromDisplayAction(): PhoneAction {
+  return {
+    type: actionTypes.delete,
+  };
+}
+
+export function toggleCallAction(): PhoneAction {
+  return {
+    type: actionTypes.toggleCall,
   };
 }

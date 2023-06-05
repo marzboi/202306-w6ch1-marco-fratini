@@ -3,19 +3,27 @@ import { PhoneContext } from "../context/phone.context";
 
 export function Action() {
   const {
-    phoneContext: { handleCall },
+    phoneContext: { handleCall, handleHang, display },
   } = useContext(PhoneContext);
 
-  function handleClick() {
+  function handleDial() {
     handleCall();
+  }
+
+  function handleHangUp() {
+    handleHang();
   }
 
   return (
     <>
-      <a href="#" className="call" onClick={handleClick}>
+      <a
+        href="#"
+        className={`call ${display.length === 9 ? "active" : ""}`}
+        onClick={handleDial}
+      >
         Call
       </a>
-      <a href="#" className="hang active">
+      <a href="#" className="hang active" onClick={handleHangUp}>
         Hang Up
       </a>
     </>
