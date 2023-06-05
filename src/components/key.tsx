@@ -7,11 +7,15 @@ type PropsType = {
 
 export function Key({ item }: PropsType) {
   const {
-    phoneContext: { handleAddNumber },
+    phoneContext: { handleAddNumber, handleDelete },
   } = useContext(PhoneContext);
 
   function handleClick() {
     handleAddNumber(item);
+  }
+
+  function handleClickDelete() {
+    handleDelete();
   }
 
   return (
@@ -22,7 +26,9 @@ export function Key({ item }: PropsType) {
             {item}
           </button>
         ) : (
-          <button className="key big">{item}</button>
+          <button className="key big" onClick={handleClickDelete}>
+            {item}
+          </button>
         )}
       </li>
     </>

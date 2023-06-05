@@ -1,4 +1,5 @@
 export const actionTypes = {
-  update: "phone@update",
+  add: "phone@update",
   delete: "phone@delete",
+  toggleCall: "phone@toggleCall",
 } as const;
