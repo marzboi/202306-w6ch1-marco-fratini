@@ -1,4 +1,4 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { PhoneState, phoneReducer } from "../reducer/phone.reducer";
 import * as ac from "../reducer/phone.actions.creator";
 
@@ -33,6 +33,16 @@ export function usePhone() {
       dispatch(ac.toggleCallAction());
     }
   }
+
+  useEffect(() => {
+    if (!phoneState.calling) {
+      if (phoneState.calling) {
+        setTimeout(() => {
+          dispatch(ac.toggleCallAction());
+        }, 2000);
+      }
+    }
+  }, [phoneState.calling]);
 
   return {
     display: phoneState.phoneNumber,
