@@ -7,7 +7,7 @@ export type PhoneState = {
 };
 
 export const phoneReducer = (state: PhoneState, action: PhoneAction) => {
-  let payload: string | boolean;
+  let payload: string;
   switch (action.type) {
     case actionTypes.add:
       payload = action.payload as string;

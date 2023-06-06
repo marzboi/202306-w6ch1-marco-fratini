@@ -2,7 +2,7 @@ import { actionTypes } from "./phone.actions.types";
 
 export type PhoneAction = {
   type: string;
-  payload?: string | boolean;
+  payload?: string;
 };
 
 export function addNumberToDisplayAction(payload: string): PhoneAction {
