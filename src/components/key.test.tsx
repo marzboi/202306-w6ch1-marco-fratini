@@ -1,8 +1,8 @@
 import { Key } from "./key";
-import { render, screen } from "@testing-library/react";
+import { render, screen, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import { ContextStructure, PhoneContext } from "../context/phone.context";
-// import userEvent from "@testing-library/user-event";
+import userEvent from "@testing-library/user-event";
 
 describe("Given the Key component", () => {
   let mockHandleAddNumber: jest.Mock;
@@ -14,15 +14,14 @@ describe("Given the Key component", () => {
   });
 
   describe("When item is '1' and calling is false", () => {
-    const value: ContextStructure = {
-      phoneContext: {
-        handleAddNumber: mockHandleAddNumber,
-        handleDelete: mockHandleDelete,
-        calling: false,
-      },
-    } as unknown as ContextStructure;
-
     beforeEach(() => {
+      const value: ContextStructure = {
+        phoneContext: {
+          handleAddNumber: mockHandleAddNumber,
+          handleDelete: mockHandleDelete,
+          calling: false,
+        },
+      } as unknown as ContextStructure;
       render(
         <PhoneContext.Provider value={value}>
           <Key item="1" />
@@ -36,23 +35,22 @@ describe("Given the Key component", () => {
       expect(buttonElement).toHaveClass("key");
     });
 
-    // test("And on clicking the button, it calls the handleAddNumber function", async () => {
-    //   const buttonElement = screen.getByRole("button");
-    //   await userEvent.click(buttonElement);
-    //   waitFor(() => expect(mockHandleAddNumber).toHaveBeenCalled());
-    // });
+    test("And on clicking the button, it calls the handleAddNumber function", async () => {
+      const buttonElement = screen.getByRole("button");
+      await userEvent.click(buttonElement);
+      waitFor(() => expect(mockHandleAddNumber).toHaveBeenCalled());
+    });
   });
 
   describe("When item is 'delete' and calling is false", () => {
-    const value: ContextStructure = {
-      phoneContext: {
-        handleAddNumber: mockHandleAddNumber,
-        handleDelete: mockHandleDelete,
-        calling: false,
-      },
-    } as unknown as ContextStructure;
-
     beforeEach(() => {
+      const value: ContextStructure = {
+        phoneContext: {
+          handleAddNumber: mockHandleAddNumber,
+          handleDelete: mockHandleDelete,
+          calling: false,
+        },
+      } as unknown as ContextStructure;
       render(
         <PhoneContext.Provider value={value}>
           <Key item="delete" />
@@ -67,10 +65,10 @@ describe("Given the Key component", () => {
       expect(buttonElement).toHaveClass("big");
     });
 
-    // test("And on clicking the button, it calls the handleDelete function", async () => {
-    //   const buttonElement = screen.getByRole("button");
-    //   await userEvent.click(buttonElement);
-    //   waitFor(() => expect(mockHandleDelete).toHaveBeenCalled());
-    // });
+    test("And on clicking the button, it calls the handleDelete function", async () => {
+      const buttonElement = screen.getByRole("button");
+      await userEvent.click(buttonElement);
+      waitFor(() => expect(mockHandleDelete).toHaveBeenCalled());
+    });
   });
 });
